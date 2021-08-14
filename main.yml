@@ -1,0 +1,12 @@
+---
+- hosts: lubuntu
+  become: yes
+  
+  roles:	 
+    - tmux
+    - nano
+    - mc
+    - brave
+    - ulauncher
+    
+    

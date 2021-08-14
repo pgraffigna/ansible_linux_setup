@@ -1,0 +1,5 @@
+---
+- name: Descargar e instalar ulauncher 
+  apt:
+    deb: "https://github.com/Ulauncher/Ulauncher/releases/download/{{ version }}/ulauncher_{{ version }}_all.deb"
+      

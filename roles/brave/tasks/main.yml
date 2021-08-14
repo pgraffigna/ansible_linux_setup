@@ -1,0 +1,21 @@
+---
+- name: Instalación de dependencias
+  apt: 
+    name: ['software-properties-common','apt-transport-https']
+
+- name: Importar llave
+  apt_key:
+    url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc 
+    state: present
+  
+- name: Agregar repo
+  apt_repository:
+    repo: deb https://brave-browser-apt-release.s3.brave.com/ stable main
+    state: present
+    update_cache: yes
+
+- name: Instalar Brave
+  apt:
+    name: brave-browser
+    state: present
+  
