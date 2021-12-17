@@ -1,12 +1,16 @@
 # ansible_linux_setup
 
-Playbook para automatizar la instalación de herramientas que uso en un sistema linux.
+Playbook para automatizar el despliegue de mi entorno de trabajo en linux.
 
 ---
 
 roles:     
-- tmux
-- nano
-- mc
+- anydesk
+- bat
 - brave
+- codium
+- nano
+- ohmybash
+- tmux
 - ulauncher
+- vagrant

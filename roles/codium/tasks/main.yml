@@ -1,0 +1,15 @@
+---
+- name:  Importar la llave
+  shell: wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/etc/apt/trusted.gpg.d/vscodium.gpg
+
+- name: Agrega los repos
+  apt_repository:
+    repo: deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main
+    state: present
+    update_cache: yes
+
+- name: Instalación de vscodium
+  apt:
+    name: codium
+    state: present
+    

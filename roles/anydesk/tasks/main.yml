@@ -1,0 +1,10 @@
+---
+- name: Descargar anydesk 
+  get_url:
+    url: "https://download.anydesk.com/linux/anydesk_{{ version }}_amd64.deb"
+    dest: /tmp
+
+- name: Instalar deb 
+  apt:
+    deb: /tmp/anydesk_{{ version }}_amd64.deb
+

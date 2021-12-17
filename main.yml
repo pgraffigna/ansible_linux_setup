@@ -1,12 +1,16 @@
 ---
-- hosts: lubuntu
+- hosts: testing
   become: yes
   
   roles:	 
-    - tmux
-    - nano
-    - mc
+    - anydesk
+    - bat
     - brave
+    - codium
+    - nano
+    - ohmybash
+    - tmux
     - ulauncher
+    - vagrant
     
     
