@@ -1,10 +1,9 @@
 ---
 - name: Instalación de dependencias
   apt: 
-    name: ['curl']
+    name: ['curl', 'fonts-powerline']
     state: latest
 
 - name: Descargar y ejecutar el script 
-  shell: timeout 90 | sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
-  become: yes
+  shell:  bash -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
   become_user: "{{ usuario }}"   

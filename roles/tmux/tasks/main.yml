@@ -1,9 +1,10 @@
 ---
 - name: Instalación de dependencias
   apt: 
-    name: ['python-apt']
+    name: ['python3-apt']
     state: latest
     update_cache: yes
+    cache_valid_time: 3600
 
 - name: Instalación de paquetes
   apt: 
