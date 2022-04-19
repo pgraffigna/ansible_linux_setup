@@ -12,7 +12,7 @@
     #- ohmybash
     #- tmux
     #- ulauncher
-    #- vagrant
+     - vagrant
      - qemu
     
     

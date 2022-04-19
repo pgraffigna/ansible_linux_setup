@@ -1,7 +1,20 @@
 ---
 - name: Instalación de dependencias
   apt: 
-    name: ['qemu-kvm', 'libvirt-clients', 'libvirt-daemon-system', 'bridge-utils', 'virtinst', 'libvirt-daemon', 'virt-manager']
+    name: 
+      - qemu-kvm
+      - libvirt-clients
+      - libvirt-daemon-system
+      - bridge-utils
+      - virtinst
+      - libvirt-daemon
+      - virt-manager
+      - build-essential
+      - libxslt-dev 
+      - libxml2-dev 
+      - libvirt-dev 
+      - zlib1g-dev
+      - ruby-dev
     update_cache: yes
     cache_valid_time: 3600
 
@@ -17,3 +30,14 @@
     groups: libvirt,libvirt-qemu
     append: yes
 
+- name: Listando plugins
+  shell: "vagrant plugin list"
+  changed_when: False
+  register: vagrant_plugins
+
+- name: Instalando plugins
+  shell: "vagrant plugin install vagrant-libvirt"
+  when:
+    - '"vagrant-libvirt" not in vagrant_plugins.stdout'
+  become: yes
+  become_user: "{{ usuario }}"
