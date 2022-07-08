@@ -1,4 +1,4 @@
 ---
 - name: Instalación de dependencias
-  apt: 
+  apt:
     name: bat

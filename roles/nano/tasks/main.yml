@@ -1,13 +1,14 @@
 ---
 - name: Instalación de dependencias
-  apt: 
+  apt:
     name: ['nano', 'git']
 
 - name: Mejora en la sintaxis de lenguajes
   git:
     repo: https://github.com/scopatz/nanorc.git
     dest: "{{ home  }}/.nano"
-  become_user: "{{ user  }}"  	
+    version: 2020.10.10
+  become_user: "{{ user  }}"
 
 - name: Inserta líneas al final del archivo
   blockinfile:
@@ -26,7 +27,8 @@
       set titlecolor normal,normal
 
       # sintax highlighting
-      include "~/.nano/*.nanorc" 
-    create: yes
+      include "~/.nano/*.nanorc"
+    create: true
+    mode: '0440'
     owner: "{{ user }}"
     group: "{{ user }}"

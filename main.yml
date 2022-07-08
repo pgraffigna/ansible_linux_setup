@@ -1,18 +1,14 @@
 ---
-- hosts: localhost
-  become: yes
-  connection: local
-  
-  roles:	 
-    #- anydesk
-    #- bat
-    #- brave
-    #- codium
-    #- nano
-    #- ohmybash
-    #- tmux
-    #- ulauncher
-     - vagrant
-     - qemu
-    
-    
+- hosts: testing
+  become: true
+
+  roles:
+    - bat
+    - brave
+    - codium
+    - nano
+    - tmux
+    - vagrant
+    - qemu
+    - lsd
+    - ohmybash

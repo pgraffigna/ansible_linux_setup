@@ -1,10 +1,10 @@
 ---
-- name: Descargar vagrant 
+- name: Descargar vagrant
   get_url:
     url: "https://releases.hashicorp.com/vagrant/{{ version }}/vagrant_{{ version }}_x86_64.deb"
     dest: /tmp
+    mode: '0440'
 
-- name: Instalar deb 
+- name: Instalar deb
   apt:
     deb: /tmp/vagrant_{{ version }}_x86_64.deb
-

@@ -1,4 +1,4 @@
 ---
-home: /home/pgraffigna
-group: pgraffigna
-user: pgraffigna
+home: /home/vagrant
+group: vagrant
+user: vagrant

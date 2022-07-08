@@ -4,7 +4,7 @@ Playbook para automatizar el despliegue de mi entorno de trabajo en linux.
 
 ---
 
-roles:     
+roles:
 - anydesk
 - bat
 - brave

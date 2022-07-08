@@ -1,10 +1,25 @@
 ---
-- name: Descargar anydesk 
-  get_url:
-    url: "https://download.anydesk.com/linux/anydesk_{{ version }}_amd64.deb"
-    dest: /tmp
-
-- name: Instalar deb 
+- name: Instalación de dependencias
   apt:
-    deb: /tmp/anydesk_{{ version }}_amd64.deb
+    name: ['curl', 'software-properties-common', 'apt-transport-https']
+    update_cache: true
+    cache_valid_time: 3600
 
+- name: Agregando gpg key
+  apt_key:
+    url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
+    keyring: /etc/apt/trusted.gpg.d/brave-browser-release.gpg
+
+- name: Agregando repo
+  apt_repository:
+    repo: deb [arch=amd64]  https://brave-browser-apt-release.s3.brave.com/ stable main
+    state: present
+    filename: brave-browser-release.list
+
+- name: Actualizando cache de los repos
+  apt:
+    update_cache: true
+
+- name: Instalando brave
+  apt:
+    name: ['brave-browser']

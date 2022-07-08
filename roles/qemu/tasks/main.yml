@@ -1,7 +1,7 @@
 ---
 - name: Instalación de dependencias
-  apt: 
-    name: 
+  apt:
+    name:
       - qemu-kvm
       - libvirt-clients
       - libvirt-daemon-system
@@ -10,34 +10,34 @@
       - libvirt-daemon
       - virt-manager
       - build-essential
-      - libxslt-dev 
-      - libxml2-dev 
-      - libvirt-dev 
+      - libxslt-dev
+      - libxml2-dev
+      - libvirt-dev
       - zlib1g-dev
       - ruby-dev
-    update_cache: yes
+    update_cache: true
     cache_valid_time: 3600
 
 - name: Iniciando y activando al inicio libvirtd
   systemd:
     name: libvirtd.service
     state: started
-    enabled: yes
+    enabled: true
 
 - name: Agregar usuarios existentes a grupos
   user:
     name: "{{ usuario }}"
     groups: libvirt,libvirt-qemu
-    append: yes
+    append: true
 
 - name: Listando plugins
-  shell: "vagrant plugin list"
-  changed_when: False
+  command: "vagrant plugin list"
+  changed_when: false
   register: vagrant_plugins
 
 - name: Instalando plugins
-  shell: "vagrant plugin install vagrant-libvirt"
+  command: "vagrant plugin install vagrant-libvirt"
   when:
     - '"vagrant-libvirt" not in vagrant_plugins.stdout'
-  become: yes
+  become: true
   become_user: "{{ usuario }}"
