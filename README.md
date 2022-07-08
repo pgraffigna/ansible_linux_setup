@@ -5,7 +5,6 @@ Playbook para automatizar el despliegue de mi entorno de trabajo en linux.
 ---
 
 roles:
-- anydesk
 - bat
 - brave
 - codium
@@ -14,3 +13,4 @@ roles:
 - tmux
 - ulauncher
 - vagrant
+- lsd
