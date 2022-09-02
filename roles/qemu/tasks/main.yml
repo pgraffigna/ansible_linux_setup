@@ -1,4 +1,6 @@
 ---
+- include_vars: ../../vars_main.yml
+
 - name: Instalación de dependencias
   apt:
     name:

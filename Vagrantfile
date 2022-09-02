@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define :server do |s|
     s.vm.box = IMAGEN
-    s.vm.hostname = "ansible"
+    s.vm.hostname = "ubuntu"
     s.vm.box_check_update = false
 
     s.vm.provider :libvirt do |v|

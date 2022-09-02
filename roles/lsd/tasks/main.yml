@@ -1,7 +1,9 @@
 ---
+- include_vars: ../../vars_main.yml
+
 - name: Descargar e instalar lsd
   apt:
-    deb: "https://github.com/Peltoche/lsd/releases/download/{{ version }}/lsd_{{ version }}_amd64.deb"
+    deb: "https://github.com/Peltoche/lsd/releases/download/{{ lsd_version }}/lsd_{{ lsd_version }}_amd64.deb"
 
 - name: Crea el directorio para los archivos de configuración
   file:
@@ -14,7 +16,7 @@
 - name: Copia archivo con configuracion
   copy:
     src: "{{ item }}"
-    dest: "/home/{{ usuario }}/.config/lsd/"
+    dest: "{{ home }}/.config/lsd/"
     owner: "{{ usuario }}"
     group: "{{ usuario }}"
     mode: 0775
@@ -27,8 +29,8 @@
     dest: /usr/share/fonts/
     remote_src: true
 
-- name: Agregando alias en bashrc.
+- name: Agregando alias en bashrc
   lineinfile:
-    dest: /home/{{ usuario }}/.bashrc
+    dest: "{{ home }}/.bashrc"
     line: "alias ls='lsd'"
     owner: "{{ usuario }}"

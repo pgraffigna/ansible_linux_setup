@@ -1,0 +1,8 @@
+---
+lsd_version: 0.22.0
+nano_version: 2020.10.10
+ulauncher_version: 5.14.4
+vagrant_version: 2.2.19
+usuario: vagrant
+grupo: vagrant
+home: /home/vagrant

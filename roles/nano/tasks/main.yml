@@ -1,14 +1,29 @@
 ---
-- name: Instalación de dependencias
+- include_vars: ../../vars_main.yml
+
+# - name: Installing Packages
+# apt:
+#   name: "{{ item }}"
+#   update_cache: yes
+#   cache_valid_time: 3600
+# with_items:
+#   - nano
+#   - git
+
+- name: Instalando dependencias
   apt:
-    name: ['nano', 'git']
+    name:
+      - nano
+      - git
+    update_cache: yes
+    cache_valid_time: 3600
 
 - name: Mejora en la sintaxis de lenguajes
   git:
     repo: https://github.com/scopatz/nanorc.git
     dest: "{{ home  }}/.nano"
-    version: 2020.10.10
-  become_user: "{{ user  }}"
+    version: "{{ nano_version }}"
+  become_user: "{{ usuario  }}"
 
 - name: Inserta líneas al final del archivo
   blockinfile:
@@ -30,5 +45,5 @@
       include "~/.nano/*.nanorc"
     create: true
     mode: '0440'
-    owner: "{{ user }}"
-    group: "{{ user }}"
+    owner: "{{ usuario }}"
+    group: "{{ usuario }}"

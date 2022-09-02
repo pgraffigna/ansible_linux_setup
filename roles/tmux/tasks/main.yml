@@ -1,13 +1,14 @@
 ---
 - name: Instalación de dependencias
   apt:
-    name: ['python3-apt']
+    name:
+      - python3-apt
+      - tmux
+      - gawk
+      - perl
+      - sed
     update_cache: true
     cache_valid_time: 3600
-
-- name: Instalación de paquetes
-  apt:
-    name: ['tmux', 'gawk', 'perl', 'sed']
 
 - name: Inserta líneas al final del archivo
   blockinfile:
@@ -56,5 +57,5 @@
       set -g history-limit 3000
     create: true
     mode: '0440'
-    owner: "{{ user }}"
-    group: "{{ group }}"
+    owner: "{{ usuario }}"
+    group: "{{ grupo }}"
