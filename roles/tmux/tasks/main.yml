@@ -1,12 +1,9 @@
 ---
+- include_vars: ../../vars_main.yml
+
 - name: Instalación de dependencias
   apt:
-    name:
-      - python3-apt
-      - tmux
-      - gawk
-      - perl
-      - sed
+    name: [ 'python3-apt', 'tmux', 'gawk', 'perl', 'sed' ]
     update_cache: true
     cache_valid_time: 3600
 

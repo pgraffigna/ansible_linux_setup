@@ -1,7 +1,9 @@
 ---
+- include_vars: ../../vars_main.yml
+
 - name: Descargar vagrant
   get_url:
-    url: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.deb"
+    url: "{{ vagrant_deb }}/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.deb"
     dest: /tmp
     mode: '0440'
 

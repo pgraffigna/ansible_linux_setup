@@ -1,26 +1,15 @@
 ---
 - include_vars: ../../vars_main.yml
 
-# - name: Installing Packages
-# apt:
-#   name: "{{ item }}"
-#   update_cache: yes
-#   cache_valid_time: 3600
-# with_items:
-#   - nano
-#   - git
-
 - name: Instalando dependencias
   apt:
-    name:
-      - nano
-      - git
-    update_cache: yes
+    name: [ 'nano', 'git' ]
+    update_cache: true
     cache_valid_time: 3600
 
 - name: Mejora en la sintaxis de lenguajes
   git:
-    repo: https://github.com/scopatz/nanorc.git
+    repo: "{{ nano_repo }}"
     dest: "{{ home  }}/.nano"
     version: "{{ nano_version }}"
   become_user: "{{ usuario  }}"

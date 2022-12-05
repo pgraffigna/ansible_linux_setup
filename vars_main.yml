@@ -1,8 +1,28 @@
 ---
+# variables de programas
 lsd_version: 0.22.0
+lsd_repo: https://github.com/Peltoche/lsd/releases/download
+lsd_nerdfonts: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/3270.zip
+
 nano_version: 2020.10.10
+nano_repo: https://github.com/scopatz/nanorc.git
+
 ulauncher_version: 5.14.4
+ulauncher_deb: https://github.com/Ulauncher/Ulauncher/releases/download
+
 vagrant_version: 2.2.19
+vagrant_deb: https://releases.hashicorp.com/vagrant
+
+brave_url: https://brave-browser-apt-release.s3.brave.com
+
+vscodium_key: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+vscodium_repo: https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/
+
+ohmybash_installer: https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh
+
+qemu_packages: [ 'qemu-kvm', 'libvirt-clients', 'libvirt-daemon-system', 'bridge-utils', 'virtinst', 'libvirt-daemon', 'virt-manager', 'build-essential', 'libxslt-dev', 'libxml2-dev', 'libvirt-dev', 'zlib1g-dev', 'ruby-dev' ]
+
+# variables de usuario
 usuario: vagrant
 grupo: vagrant
 home: /home/vagrant

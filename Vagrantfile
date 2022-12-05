@@ -7,11 +7,11 @@ Vagrant.configure("2") do |config|
 
   config.vm.define :server do |s|
     s.vm.box = IMAGEN
-    s.vm.hostname = "ubuntu"
+    s.vm.hostname = "ansible-test"
     s.vm.box_check_update = false
 
     s.vm.provider :libvirt do |v|
-      v.memory = 1024
+      v.memory = 2048
       v.cpus = 2
     end
   end

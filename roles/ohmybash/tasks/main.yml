@@ -1,25 +1,14 @@
 ---
 - include_vars: ../../vars_main.yml
 
-# - name: Instalación de dependencias
-#   apt:
-#     name: "{{ item }}"
-#     update_cache: yes
-#     cache_valid_time: 3600
-#   with_items:
-#     - curl
-#     - fonts-powerline
-
 - name: Instalación de dependencias
   apt:
-    name:
-      - curl
-      - fonts-powerline
-    update_cache: yes
+    name: [ 'curl', 'fonts-powerline' ]
+    update_cache: true
     cache_valid_time: 3600
 
 - name: Descargar y ejecutar el script
-  shell: bash -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+  shell: bash -c "$(curl -fsSL {{ ohmybash_installer }})"
   become_user: "{{ usuario }}"
   async: 25
   poll: 25

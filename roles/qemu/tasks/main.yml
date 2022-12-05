@@ -3,22 +3,10 @@
 
 - name: Instalación de dependencias
   apt:
-    name:
-      - qemu-kvm
-      - libvirt-clients
-      - libvirt-daemon-system
-      - bridge-utils
-      - virtinst
-      - libvirt-daemon
-      - virt-manager
-      - build-essential
-      - libxslt-dev
-      - libxml2-dev
-      - libvirt-dev
-      - zlib1g-dev
-      - ruby-dev
+    name: "{{ item }}"
     update_cache: true
     cache_valid_time: 3600
+  with_items: "{{ qemu_packages }}"
 
 - name: Iniciando y activando al inicio libvirtd
   systemd:

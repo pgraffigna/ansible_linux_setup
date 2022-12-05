@@ -1,12 +1,14 @@
 ---
+- include_vars: ../../vars_main.yml
+
 - name: Importar la llave
   apt_key:
     state: present
-    url: https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+    url: "{{ vscodium_key }}"
 
 - name: Agrega los repos
   apt_repository:
-    repo: deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main
+    repo: deb "{{ vscodium_repo }}" vscodium main
     state: present
     update_cache: true
 

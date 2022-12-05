@@ -3,7 +3,7 @@
 
 - name: Descargar e instalar lsd
   apt:
-    deb: "https://github.com/Peltoche/lsd/releases/download/{{ lsd_version }}/lsd_{{ lsd_version }}_amd64.deb"
+    deb: "{{ lsd_repo }}/{{ lsd_version }}/lsd_{{ lsd_version }}_amd64.deb"
 
 - name: Crea el directorio para los archivos de configuración
   file:
@@ -25,7 +25,7 @@
 
 - name: Descargando y copiando NerdFonts
   unarchive:
-    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/3270.zip
+    src: "{{ lsd_nerdfonts }}"
     dest: /usr/share/fonts/
     remote_src: true
 

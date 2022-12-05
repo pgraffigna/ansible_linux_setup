@@ -1,26 +1,20 @@
 ---
-# - name: Instalación de dependencias
-#   apt:
-#     name: ['software-properties-common', 'apt-transport-https']
-#     update_cache: true
-#     cache_valid_time: 3600
+- include_vars: ../../vars_main.yml
 
 - name: Instalación de dependencias
   apt:
-    name:
-      - software-properties-common
-      - apt-transport-https
+    name: [ 'software-properties-common', 'apt-transport-https' ]
     update_cache: true
     cache_valid_time: 3600
 
 - name: Importar llave
   apt_key:
-    url: https://brave-browser-apt-release.s3.brave.com/brave-core.asc
+    url: "{{ brave_url }}/brave-core.asc"
     state: present
 
 - name: Agregar repo
   apt_repository:
-    repo: deb https://brave-browser-apt-release.s3.brave.com/ stable main
+    repo: deb "{{ brave_url }}" stable main
     state: present
     update_cache: true
 
