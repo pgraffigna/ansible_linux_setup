@@ -1,14 +1,16 @@
 ---
-- include_vars: ../../vars_main.yml
+- name: Incluye el archivo con las variables
+  ansible.builtin.include_vars:
+    file: vars_main.yml
 
-- name: Instalación de dependencias
-  apt:
+- name: Instalar dependencias
+  ansible.builtin.apt:
     name: [ 'curl', 'fonts-powerline' ]
     update_cache: true
     cache_valid_time: 3600
 
-- name: Descargar y ejecutar el script
-  shell: bash -c "$(curl -fsSL {{ ohmybash_installer }})"
+- name: Descargar + Ejecutar script
+  ansible.builtin.shell: bash -c "$(curl -fsSL {{ ohmybash_installer }})"
   become_user: "{{ usuario }}"
   async: 25
   poll: 25

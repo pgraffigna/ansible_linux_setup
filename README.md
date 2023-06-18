@@ -5,7 +5,7 @@ Playbook para automatizar el despliegue de mi entorno de trabajo en linux.
 ---
 
 roles:
-- bat
+- python_tools
 - brave
 - codium
 - nano
@@ -14,3 +14,11 @@ roles:
 - ulauncher
 - vagrant
 - lsd
+- bashrc
+- jq_flameshot_bat
+- qemu
+
+---
+
+to-do:
+- actualizar versiones de aplicaciones

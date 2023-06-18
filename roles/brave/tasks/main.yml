@@ -1,24 +1,20 @@
 ---
-- include_vars: ../../vars_main.yml
-
-- name: Instalación de dependencias
-  apt:
-    name: [ 'software-properties-common', 'apt-transport-https' ]
-    update_cache: true
-    cache_valid_time: 3600
+- name: Incluye el archivo con las variables
+  ansible.builtin.include_vars:
+    file: vars_main.yml
 
 - name: Importar llave
-  apt_key:
+  ansible.builtin.apt_key:
     url: "{{ brave_url }}/brave-core.asc"
     state: present
 
 - name: Agregar repo
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: deb "{{ brave_url }}" stable main
     state: present
     update_cache: true
 
-- name: Instalar Brave
-  apt:
-    name: brave-browser
-    state: present
+- name: Instalar brave
+  ansible.builtin.apt:
+    name: [ 'brave-browser', 'software-properties-common', 'apt-transport-https' ]
+

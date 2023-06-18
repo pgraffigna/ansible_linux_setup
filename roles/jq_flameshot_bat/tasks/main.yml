@@ -1,0 +1,8 @@
+---
+- name: Instalar Aplicaciones
+  ansible.builtin.package:
+    name:
+      - jq
+      - flameshot
+      - bat
+    state: latest

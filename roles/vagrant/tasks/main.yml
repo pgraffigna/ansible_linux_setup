@@ -1,12 +1,26 @@
 ---
-- include_vars: ../../vars_main.yml
+- name: Incluye el archivo con las variables
+  ansible.builtin.include_vars:
+    file: vars_main.yml
 
 - name: Descargar vagrant
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ vagrant_deb }}/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.deb"
     dest: /tmp
-    mode: '0440'
+    mode: 0440
 
 - name: Instalar deb
-  apt:
+  ansible.builtin.apt:
     deb: /tmp/vagrant_{{ vagrant_version }}_x86_64.deb
+
+- name: Listar plugins
+  ansible.builtin.command: "vagrant plugin list"
+  changed_when: false
+  register: vagrant_plugins
+
+- name: Instalar plugins
+  ansible.builtin.command: "vagrant plugin install vagrant-libvirt"
+  when:
+    - '"vagrant-libvirt" not in vagrant_plugins.stdout'
+  become: true
+  become_user: "{{ usuario }}"

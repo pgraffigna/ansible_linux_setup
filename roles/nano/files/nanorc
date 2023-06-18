@@ -1,0 +1,30 @@
+set autoindent
+set tabsize 4
+set smooth
+set nowrap
+set numbercolor white,blue
+set nonewlines
+
+# disables the shortcut hints
+set nohelp
+
+# disable inverse text for the minibar
+set titlecolor normal,normal
+
+# sintax highlighting
+include "~/.nano/*.nanorc"
+
+# colors
+# nano 5.8 color declarations:
+# white, black, blue, green, red,  cyan,  yellow, magenta, and normal
+# The name of the foreground color may be prefixed with bright.
+# bold and italic not supported
+set titlecolor brightwhite,yellow
+set keycolor white,blue
+set functioncolor normal,normal
+set numbercolor white,magenta
+set errorcolor brightwhite,red
+set selectedcolor black,white
+set stripecolor black,white
+set statuscolor black,white
+

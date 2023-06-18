@@ -1,33 +1,23 @@
 ---
-- include_vars: ../../vars_main.yml
+- name: Incluye el archivo con las variables
+  ansible.builtin.include_vars:
+    file: vars_main.yml
 
-- name: Instalación de dependencias
-  apt:
+- name: Instalar qemu
+  ansible.builtin.apt:
     name: "{{ item }}"
     update_cache: true
     cache_valid_time: 3600
   with_items: "{{ qemu_packages }}"
 
-- name: Iniciando y activando al inicio libvirtd
-  systemd:
-    name: libvirtd.service
-    state: started
-    enabled: true
-
-- name: Agregar usuarios existentes a grupos
-  user:
+- name: Agregar usuarios a grupos
+  ansible.builtin.user:
     name: "{{ usuario }}"
-    groups: libvirt,libvirt-qemu
+    groups: "{{ item }}"
     append: true
+  with_items: [ 'libvirt', 'libvirt-qemu' ]
+  notify: iniciar_libvirtd
 
-- name: Listando plugins
-  command: "vagrant plugin list"
-  changed_when: false
-  register: vagrant_plugins
 
-- name: Instalando plugins
-  command: "vagrant plugin install vagrant-libvirt"
-  when:
-    - '"vagrant-libvirt" not in vagrant_plugins.stdout'
-  become: true
-  become_user: "{{ usuario }}"
+
+

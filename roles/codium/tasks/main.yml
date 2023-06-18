@@ -1,18 +1,20 @@
 ---
-- include_vars: ../../vars_main.yml
+- name: Incluye el archivo con las variables
+  ansible.builtin.include_vars:
+    file: vars_main.yml
 
-- name: Importar la llave
-  apt_key:
+- name: Importar llave
+  ansible.builtin.apt_key:
     state: present
     url: "{{ vscodium_key }}"
 
-- name: Agrega los repos
-  apt_repository:
+- name: Agregar repos
+  ansible.builtin.apt_repository:
     repo: deb "{{ vscodium_repo }}" vscodium main
     state: present
     update_cache: true
 
-- name: Instalación de vscodium
-  apt:
+- name: Instalar vscodium
+  ansible.builtin.apt:
     name: codium
     state: present

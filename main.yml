@@ -1,14 +1,17 @@
 ---
 - hosts: testing
   become: true
+  gather_facts: false
 
   roles:
     - brave
-    - bat
+    - jq_flameshot_bat
     - codium
     - nano
     - tmux
-    - vagrant
     - qemu
+    - vagrant
     - lsd
     - ohmybash
+    - python_tools
+    - bashrc

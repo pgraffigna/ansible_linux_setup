@@ -1,0 +1,28 @@
+---
+- name: Fix para terminal
+  ansible.builtin.lineinfile:
+    path: "/home/{{ usuario }}/.bashrc"
+    regexp: '^OSH_THEME'
+    line: OSH_THEME="powerline"
+
+- name: Copiar aliases
+  ansible.builtin.blockinfile:
+    path: "/home/{{ usuario }}/.bashrc"
+    block: |
+      # funcion para crear estructura de trabajo para proyectos con Ansible
+      mkansible(){
+      RUTA_FULL=ansible_role_template/roles/template/
+      RUTA=ansible_role_template/
+
+            mkdir -p "${RUTA_FULL}"{tasks,vars,handlers,files,defaults} && touch "${RUTA_FULL}"{tasks/main.yml,vars/main.yml,handlers/main.yml,defaults/main.yml}
+            touch "$RUTA"{ansible.cfg,inventory,main.yml}
+      }
+
+      # aliases
+      alias vpn_pro="cd ~/vpn && sudo openvpn noc-fw-a-UDP4-443-config.ovpn"
+      alias fuck_note="xfreerdp /u:usuario /p:password /v:192.168.0.18 /cert:ignore +clipboard /dynamic-resolution &>/dev/null &"
+      alias ssh_alias="sed -rn 's/^\s*Host\s+(.*)\s*/\1/ip' ~/.ssh/conf.d/*.conf"
+      alias ls="lsd"
+      alias cat="batcat"
+      alias vscp='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+      alias subs='subliminal --opensubtitles usuario password download -l en ~/datos/jelly-media/media'
