@@ -1,11 +1,11 @@
 ---
-- name: Fix para terminal
+- name: Configurando tema para terminal
   ansible.builtin.lineinfile:
     path: "/home/{{ usuario }}/.bashrc"
     regexp: '^OSH_THEME'
     line: OSH_THEME="powerline"
 
-- name: Copiar aliases
+- name: Configurando aliases
   ansible.builtin.blockinfile:
     path: "/home/{{ usuario }}/.bashrc"
     block: |

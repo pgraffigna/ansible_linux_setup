@@ -2,7 +2,7 @@ set autoindent
 set tabsize 4
 set smooth
 set nowrap
-set numbercolor white,blue
+set numbercolor italic,normal,normal
 set nonewlines
 
 # disables the shortcut hints
@@ -15,10 +15,6 @@ set titlecolor normal,normal
 include "~/.nano/*.nanorc"
 
 # colors
-# nano 5.8 color declarations:
-# white, black, blue, green, red,  cyan,  yellow, magenta, and normal
-# The name of the foreground color may be prefixed with bright.
-# bold and italic not supported
 set titlecolor brightwhite,yellow
 set keycolor white,blue
 set functioncolor normal,normal

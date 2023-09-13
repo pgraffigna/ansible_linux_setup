@@ -4,14 +4,14 @@
   gather_facts: false
 
   roles:
-    - brave
-    - jq_flameshot_bat
-    - codium
-    - nano
-    - tmux
+    # - brave
+    # - jq_flameshot_bat
+    # - codium
+    # - nano
+    # - tmux
     - qemu
     - vagrant
-    - lsd
-    - ohmybash
-    - python_tools
-    - bashrc
+    # - lsd
+    # - ohmybash
+    # - python_tools
+    # - bashrc

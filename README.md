@@ -20,5 +20,3 @@ roles:
 
 ---
 
-to-do:
-- actualizar versiones de aplicaciones
